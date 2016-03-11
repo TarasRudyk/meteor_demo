@@ -1,0 +1,46 @@
+<head>
+  <title>demo</title>
+</head>
+
+<body>
+  <div class="simple-gallery container">
+  	{{>Images}}
+  </div>
+</body>
+
+<template name="Images">
+	<div class="menu">
+	  	<h1>Simple Gallery!</h1>
+	   	<h2 href="#" class="category">Cats</h2>
+	    <h2 href="#" class="category">Nature</h2>
+  	</div>
+	{{#each images 20}}
+		{{> Image}}
+	{{/each}}
+</template>
+
+<template name="Image">
+	<figure class="image clickable" data-toggle="modal" data-target="#modal-{{_id}}">
+		<div class="image-container">
+			<img src="{{src}}">
+		</div>
+		<footer class="title">
+			{{title}}
+		</footer>
+	</figure>
+	<!-- Modal -->
+	<div class="modal fade" id="modal-{{_id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+			<figure class="image clickable" data-toggle="modal" data-target="#modal-{{_id}}">
+				<div class="image-container">
+					<img src="{{src}}">
+				</div>
+				<footer class="title">
+					{{title}}
+				</footer>
+			</figure>
+	    </div>
+	  </div>
+	</div>
+</template>
